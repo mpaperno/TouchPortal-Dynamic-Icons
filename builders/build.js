@@ -78,9 +78,9 @@ const build = async(platform, options ) => {
     ]);
 
     let platform_arch = platform
-    if( options?.type !== undefined )
+    if(options?.type)
         platform_arch += `-${options.type}`
-    const packageName = path.join(".", "Installers", `${packageJson.name}-${platform_arch}-${packageJson.version}.tpp`)
+    const packageName = path.normalize(`./Installers/${packageJson.name}-${platform_arch}-${packageJson.version}.tpp`)
 
     console.log(`Creating zip file '${packageName}'`)
     const zip = new AdmZip()
